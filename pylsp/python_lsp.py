@@ -704,10 +704,10 @@ class PythonLSPServer(MethodDispatcher):
 
     def m_text_document__completion(self, textDocument=None, position=None, **_kwargs):
         # textDocument here is just a dict with a uri
-        # import jedi
-        # jedi.settings.dynamic_params = False
-        # jedi.settings.dynamic_params_for_other_modules = False
-        # jedi.settings.dynamic_array_additions = False
+        import jedi
+        jedi.settings.dynamic_params = False
+        jedi.settings.dynamic_params_for_other_modules = False
+        jedi.settings.dynamic_array_additions = False
 
         workspace = self._match_uri_to_workspace(textDocument["uri"])
         document = workspace.get_document(textDocument["uri"])
