@@ -76,9 +76,9 @@ class Resolver:
         try:
             sig = completion.get_signatures()
             return self.callback(completion, sig)
-        except Exception as e:
-            log.warning(
-                f"Something went wrong when resolving label for {completion}: {e}"
+        except Exception:
+            log.exception(
+                f"Something went wrong when resolving label for {completion}"
             )
             return self.resolve_on_error
 

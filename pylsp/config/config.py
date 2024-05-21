@@ -86,7 +86,10 @@ class Config:
 
         # Load the entry points into pluggy, having blocked any failing ones.
         # Despite the API name, recent Pluggy versions will use ``importlib_metadata``.
-        self._pm.load_setuptools_entrypoints(PYLSP)
+        try:
+            self._pm.load_setuptools_entrypoints(PYLSP)
+        except:
+            pass
 
         for name, plugin in self._pm.list_name_plugin():
             if plugin is not None:
